@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Książka kontaktowa FENICE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
+
+
+
+</head>
+<body>
+<div  class="container">
+    <div class="centered">
+        <h1> Książka kontaktowa FENICE</h1>
+        <br/><br/>
+        <form class="form-horizontal" th:action="@{/szukaj}" th:method="get">
+            <div class="col-sm-3 my-2">
+                <input type="text" class="form-control" id="s" name="s" th:value="*{s}"/>
+            </div>
+            <button type="submit" class="btn btn-default">Szukaj</button>
+        </form>
+    </div>
+
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <td>Nazwa</td>
+                <td>Email</td>
+                <td>Numer stacjonany</td>
+                <td>Numer komórkowy</td>
+            </tr>
+            </thead>
+            <tbody th:each=" person : ${persons}">
+            <tr>
+                <td th:text="${person.fullName}"></td>
+                <td th:text="${person.mail}"></td>
+                <td th:text="${person.telephoneNumber}"></td>
+                <td th:text="${person.mobile}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</body>
+</html>
